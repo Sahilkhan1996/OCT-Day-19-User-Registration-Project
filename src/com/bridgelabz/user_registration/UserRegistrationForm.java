@@ -49,8 +49,20 @@ public class UserRegistrationForm {
 		} else {
 			System.out.println("Sorry! you have entered invalid Mobile Number");
 		}
-		sc.close();
 		
+		
+		//UC5: Password with the rule of minimum 8 characters
+		
+		System.out.println("Please enter your Password: ");
+		String password = sc.nextLine();
+		String passwordPattern="[A-Za-z0-9]{8,}$";
+		boolean passwordCheck = Pattern.matches(passwordPattern,password);
+		if (passwordCheck) {
+			System.out.println("Fantastic! You have entered valid Password");
+		} else {
+			System.out.println("Sorry! you have entered invalid Password");
+		}
+		sc.close();
 		
 	}
 }
