@@ -32,6 +32,17 @@ public class UserRegistrationForm {
 		System.out.println("Please enter your Email Address: ");
 		String email = sc.nextLine();
 		String emailPattern = "^[a-z0-9]{3,}[+.-]?[a-z0-9]{0,}[@]{1,}[a-z0-9]{1,}[.]{1,}([a-z]{0,}[.]{0,})[a-z]{2,}$";
+		/*UC9:Email Sample to check 
+		 abc@yahoo.com
+		abc-100@yahoo.com
+		abc.100@yahoo.com
+		abc111@abc.com
+		abc-100@abc.net
+		abc.100@abc.com.au
+		abc@1.com
+		abc@gmail.co
+		abc+100@gmail.com
+		  */
 		boolean emailCheck = Pattern.matches(emailPattern, email);
 		if (emailCheck) {
 			System.out.println("Wonderfull! You have entered valid Email Address");
