@@ -51,11 +51,13 @@ public class UserRegistrationForm {
 		}
 		
 		
-		//UC5: Password with the rule of minimum 8 characters
-		
+		//Password:
 		System.out.println("Please enter your Password: ");
 		String password = sc.nextLine();
-		String passwordPattern="[A-Za-z0-9]{8,}$";
+		//UC5: Password with the rule of minimum 8 characters
+		//String passwordPattern="[A-Za-z0-9]{8,}$"; should have minimum 8 characters
+		//UC6: Password with the rule of minimum 1 capital letter
+		String passwordPattern="^(?=.*[A-Z])([A-Za-z0-9]){8,}$";
 		boolean passwordCheck = Pattern.matches(passwordPattern,password);
 		if (passwordCheck) {
 			System.out.println("Fantastic! You have entered valid Password");
@@ -63,6 +65,5 @@ public class UserRegistrationForm {
 			System.out.println("Sorry! you have entered invalid Password");
 		}
 		sc.close();
-		
 	}
 }
