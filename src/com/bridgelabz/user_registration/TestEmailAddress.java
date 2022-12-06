@@ -18,7 +18,7 @@ public class TestEmailAddress {
 	}
 
 	@Test
-	public void emailTest() {
+	public void emailTest() throws InvalidUserDetailsException {
 		UserRegistrationForm form = new UserRegistrationForm();
 		Assert.assertEquals(expected, form.checkEmailAddress(input));
 	}
