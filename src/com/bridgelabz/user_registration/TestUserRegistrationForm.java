@@ -17,7 +17,7 @@ public class TestUserRegistrationForm {
 	@Test
 	public void testFirstName2() {
 		String name = "sahil";
-		Assert.assertEquals(true, ur.checkFirstName(name)); // org.junit and select object class
+		Assert.assertNotEquals(true, ur.checkFirstName(name)); // org.junit and select object class
 	}
 
 	@Test
@@ -29,7 +29,7 @@ public class TestUserRegistrationForm {
 	@Test
 	public void testLastName2() {
 		String name = "khan";
-		Assert.assertEquals(true, ur.checkLastName(name)); // org.junit and select object class
+		Assert.assertNotEquals(true, ur.checkLastName(name)); // org.junit and select object class
 	}
 
 	@Test
@@ -41,7 +41,7 @@ public class TestUserRegistrationForm {
 	@Test
 	public void testEmailAddress2() {
 		String name = "Sahilkhan199655@gmail.com";
-		Assert.assertEquals(true, ur.checkEmailAddress(name)); // org.junit and select object class
+		Assert.assertNotEquals(true, ur.checkEmailAddress(name)); // org.junit and select object class
 	}
 
 	@Test
@@ -53,7 +53,7 @@ public class TestUserRegistrationForm {
 	@Test
 	public void testMobileNumber2() {
 		String name = "+91 77775035369";
-		Assert.assertEquals(true, ur.checkMobileNumber(name)); // org.junit and select object class
+		Assert.assertNotEquals(true, ur.checkMobileNumber(name)); // org.junit and select object class
 	}
 
 	@Test
@@ -65,7 +65,7 @@ public class TestUserRegistrationForm {
 	@Test
 	public void testPassword2() {
 		String name = "Sahil7##12";
-		Assert.assertEquals(true, ur.checkPassword(name)); // org.junit and select object class
+		Assert.assertNotEquals(true, ur.checkPassword(name)); // org.junit and select object class
 	}
 
 }
