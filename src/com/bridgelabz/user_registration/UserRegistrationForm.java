@@ -54,14 +54,14 @@ public class UserRegistrationForm {
 				count++;
 			}
 		}
-		boolean flag=false;
+		boolean flag = false;
 
 		if (passwordCheck) {
 			if (count == 0 || count > 1) {
 				System.out.println("Sorry! you have entered invalid Password");
-				
+
 			} else {
-				flag=true;
+				flag = true;
 				System.out.println("Fantastic! You have entered valid Password");
 			}
 		} else {
