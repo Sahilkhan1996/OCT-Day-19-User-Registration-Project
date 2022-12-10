@@ -46,7 +46,15 @@ public class UserRegistrationForm {
 
 		// UC8:Password with the rule of only 1 special character
 		String passwordPattern = "^(?=.*[0-9])(?=.*[A-Z])(?=.*[~!@#$%^&*()<>:{},.;'])([A-Za-z0-9~!@#$%^&*()<>:{},.;']){8,}$";
-		boolean passwordCheck = Pattern.matches(passwordPattern, password);
+		//boolean passwordCheck = Pattern.matches(passwordPattern, password);
+		
+		IUserRegistration patternMatcher = (i1, i2) -> {
+			boolean patterChecker = Pattern.matches(i2, i1);
+			return patterChecker;
+		};
+		boolean passwordCheck = patternMatcher.checkvalidation(password, passwordPattern);
+		
+	
 		int count = 0;
 		for (int i = 0; i < password.length(); i++) {
 			if (!Character.isDigit(password.charAt(i)) && !Character.isLetter(password.charAt(i))
@@ -73,8 +81,15 @@ public class UserRegistrationForm {
 
 	public boolean checkMobileNumber(String mobileNumber) throws InvalidUserDetailsException {
 		// UC4: Mobile Number
-		String mobileNumberPattern = "^[+91]{3,}[ ][0-9]{10}$";
-		boolean mnCheck = Pattern.matches(mobileNumberPattern, mobileNumber);
+		 String mobileNumberPattern = "^[+91]{3,}[ ][0-9]{10}$";
+
+		IUserRegistration patternMatcher = (i1, i2) -> {
+			boolean patterChecker = Pattern.matches(mobileNumberPattern, mobileNumber);
+			return patterChecker;
+		};
+		boolean mnCheck = patternMatcher.checkvalidation(mobileNumber, mobileNumberPattern);
+
+		//boolean mnCheck = Pattern.matches(mobileNumberPattern, mobileNumber);
 		if (mnCheck) {
 			System.out.println("Flabbergasted! You have entered valid Mobile Number");
 		} else {
@@ -85,13 +100,22 @@ public class UserRegistrationForm {
 
 	public boolean checkEmailAddress(String email) throws InvalidUserDetailsException {
 		// UC3: Email
-		String emailPattern = "^[a-z0-9]{3,}[+.-]?[a-z0-9]{0,}[@]{1,}[a-z0-9]{1,}[.]{1,}([a-z]{0,}[.]{0,})[a-z]{2,}$";
+		// String emailPattern =
+		// "^[a-z0-9]{3,}[+.-]?[a-z0-9]{0,}[@]{1,}[a-z0-9]{1,}[.]{1,}([a-z]{0,}[.]{0,})[a-z]{2,}$";
 		/*
 		 * UC9:Email Sample to check abc@yahoo.com abc-100@yahoo.com abc.100@yahoo.com
 		 * abc111@abc.com abc-100@abc.net abc.100@abc.com.au abc@1.com abc@gmail.co
 		 * abc+100@gmail.com
 		 */
-		boolean emailCheck = Pattern.matches(emailPattern, email);
+		// boolean emailCheck = Pattern.matches(emailPattern, email);
+
+		String emailPattern = "^[a-z0-9]{3,}[+.-]?[a-z0-9]{0,}[@]{1,}[a-z0-9]{1,}[.]{1,}([a-z]{0,}[.]{0,})[a-z]{2,}$";
+		IUserRegistration patternMatcher = (i1, i2) -> {
+			boolean patterChecker = Pattern.matches(emailPattern, email);
+			return patterChecker;
+		};
+		boolean emailCheck = patternMatcher.checkvalidation(email, emailPattern);
+
 		if (emailCheck) {
 			System.out.println("Wonderfull! You have entered valid Email Address");
 		} else {
@@ -103,7 +127,15 @@ public class UserRegistrationForm {
 
 	public boolean checkLastName(String lastName) throws InvalidUserDetailsException {
 		// UC2:Last Name
-		boolean lastNameCheck = Pattern.matches("^[A-Z][a-z]{2,}$", lastName);
+		// boolean lastNameCheck = Pattern.matches("^[A-Z][a-z]{2,}$", lastName);
+		String lastNamePattern = "^[A-Z][a-z]{2,}$";
+
+		IUserRegistration patternMatcher = (i1, i2) -> {
+			boolean patterChecker = Pattern.matches(lastNamePattern, lastName);
+			return patterChecker;
+		};
+
+		boolean lastNameCheck = patternMatcher.checkvalidation(lastName, lastNamePattern);
 		if (lastNameCheck) {
 			System.out.println("Fantastic! You have entered valid Last Name");
 		} else {
@@ -115,13 +147,19 @@ public class UserRegistrationForm {
 
 	public boolean checkFirstName(String firstName) throws InvalidUserDetailsException {
 		// UC1:First Name
-		boolean res = Pattern.matches("^[A-Z][a-z]{2,}$", firstName);
-		if (res) {
+		// boolean res = Pattern.matches("^[A-Z][a-z]{2,}$", firstName);
+		String firstNamePattern = "^[A-Z][a-z]{2,}$";
+		IUserRegistration patternMatcher = (i1, i2) -> {
+			boolean patterChecker = Pattern.matches(i2, i1);
+			return patterChecker;
+		};
+		boolean patternResult = patternMatcher.checkvalidation(firstName, firstNamePattern);
+		if (patternResult) {
 			System.out.println("Awesome! You have entered valid First Name");
 		} else {
 			throw new InvalidUserDetailsException("Sorry! you have entered invalid First Name");
 		}
-		return res;
+		return patternResult;
 
 	}
 }
